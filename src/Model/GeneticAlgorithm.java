@@ -12,7 +12,7 @@ import java.util.Random;
  */
 public class GeneticAlgorithm {
     private Random random = new Random();
-    private PriorityQueue<ChessBoard> population = new PriorityQueue<>(new ChessBoardComparator());
+    private PriorityQueue<ChessBoard> population = new PriorityQueue<>();
 
     public GeneticAlgorithm(int populationSize){
         for (int i=0; i < populationSize; i++){
@@ -25,7 +25,7 @@ public class GeneticAlgorithm {
         ChessBoard parentB;
         ChessBoard child;
 
-        PriorityQueue<ChessBoard> newPopulation = new PriorityQueue<>(new ChessBoardComparator());
+        PriorityQueue<ChessBoard> newPopulation = new PriorityQueue<>();
 
         while (population.peek().getFitness() != ChessBoardController.MAX_FITNESS) {
 
@@ -50,7 +50,7 @@ public class GeneticAlgorithm {
     }
 
     private ChessBoard randomSelection(PriorityQueue<ChessBoard> population){
-        PriorityQueue<ChessBoard> temporary = new PriorityQueue<>(new ChessBoardComparator());
+        PriorityQueue<ChessBoard> temporary = new PriorityQueue<>();
         temporary.addAll(population);
 
         ChessBoard randomBoard = null;
@@ -85,10 +85,4 @@ public class GeneticAlgorithm {
         return new ChessBoard(updatedBoard);
     }
 
-    protected class ChessBoardComparator implements Comparator<ChessBoard> {
-        @Override
-        public int compare(ChessBoard x, ChessBoard y){
-            return y.getFitness() - x.getFitness();
-        }
-    }
 }

@@ -2,10 +2,12 @@ package Model;
 
 import Controller.ChessBoardController;
 
+import java.util.Comparator;
+
 /**
  * Created by mayalake on 5/1/18.
  */
-public class ChessBoard {
+public class ChessBoard implements Comparable<ChessBoard>{
     private int[] board = new int[ChessBoardController.CHESSBOARD_SIZE];
     private int fitness;
 
@@ -29,5 +31,10 @@ public class ChessBoard {
 
     public int getFitness(){
         return fitness;
+    }
+
+    @Override
+    public int compareTo(ChessBoard chessBoard){
+        return Integer.compare(chessBoard.getFitness(), fitness);
     }
 }

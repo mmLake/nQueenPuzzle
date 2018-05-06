@@ -3,6 +3,7 @@ package Model;
 import Controller.ChessBoardController;
 import Model.ChessBoard;
 
+import java.util.Arrays;
 import java.util.Comparator;
 import java.util.PriorityQueue;
 import java.util.Random;
@@ -12,15 +13,20 @@ import java.util.Random;
  */
 public class GeneticAlgorithm {
     private Random random = new Random();
-    private PriorityQueue<ChessBoard> population = new PriorityQueue<>();
 
     public GeneticAlgorithm(int populationSize){
+        PriorityQueue<ChessBoard> population = new PriorityQueue<>();
+
         for (int i=0; i < populationSize; i++){
             population.add(new ChessBoard());
         }
+
+        ChessBoard finalBoard = run(population);
+
+        System.out.println(Arrays.toString(finalBoard.getBoard()) + "\n" + finalBoard.getFitness() + "\n");
     }
 
-    public ChessBoard run(){
+    private ChessBoard run(PriorityQueue<ChessBoard> population){
         ChessBoard parentA;
         ChessBoard parentB;
         ChessBoard child;
@@ -62,8 +68,7 @@ public class GeneticAlgorithm {
             }
         }
 
-        System.out.println("STRANGE 1");
-        return randomBoard;
+        return null;
     }
 
     private ChessBoard reproduce(ChessBoard parentA, ChessBoard parentB){

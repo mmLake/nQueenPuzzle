@@ -21,12 +21,23 @@ public class ChessBoard implements Comparable<ChessBoard>{
         fitness = ChessBoardController.setFitness(board);
     }
 
+    public ChessBoard(ChessBoard chessBoard){
+        this.board = chessBoard.getBoard();
+        this.fitness = chessBoard.getFitness();
+    }
+
     public int[] getBoard(){
         return board;
     }
 
     public void setBoard(int[] board){
         this.board = board;
+        fitness = ChessBoardController.setFitness(board);
+    }
+
+    public void setChessBoard(ChessBoard chessBoard){
+        this.board = chessBoard.getBoard();
+        this.fitness = chessBoard.getFitness();
     }
 
     public int getFitness(){
@@ -37,4 +48,5 @@ public class ChessBoard implements Comparable<ChessBoard>{
     public int compareTo(ChessBoard chessBoard){
         return Integer.compare(chessBoard.getFitness(), fitness);
     }
+
 }
